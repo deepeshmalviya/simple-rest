@@ -35,9 +35,7 @@ For e.g. for REST uri "/rest/test", there should be Controllers/Test.php
 
 For e.g.
  
-	class Controllers_Test extends RestController {
-
-	}
+	class Controllers_Test extends RestController {	}
 
 - Suppose, you only want to enable POST method for a REST api and disable
 other methods (GET/PUT/DELETE). In that case the disabled methods should 
