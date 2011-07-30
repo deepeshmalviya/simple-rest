@@ -8,6 +8,10 @@ formats like JSON, XML and QUERYSTRING.
 The Simple-REST is licensed under the Apache Licence, Version 2.0
 (http://www.apache.org/licenses/LICENSE-2.0.html)
 
+Requirement
+-----------
+
+mod_rewrite support is required.
 
 Usage
 -----
