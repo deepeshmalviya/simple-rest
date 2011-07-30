@@ -33,7 +33,8 @@ For e.g. for REST uri "/rest/test", there should be Controllers/Test.php
 - The controller class name should have "Controllers_" prefix.
 - The controller class should extend RestController defined in Rest.php.
 
-For e.g. 
+For e.g.
+ 
 	class Controllers_Test extends RestController {
 
 	}
