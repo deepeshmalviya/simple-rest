@@ -14,6 +14,8 @@ Usage
 
 Look in the [examples][examples] folder for the implementation details.
 
+[examples]: https://github.com/deepeshmalviya/simple-rest/tree/master/examples
+
 To test the examples, run the following curl commands in shell after uploading
 folder to your localhost document root.
 
