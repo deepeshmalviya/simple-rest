@@ -13,6 +13,66 @@ Requirement
 
 mod_rewrite support is required.
 
+Notes
+-----
+
+- Following is the directory structure to be followed to use this library properly.
+
+Support your url is http://example.com which is mapped to /var/www on your server
+then to have rest uri http://example.com/rest/test, you need to upload the files
+in src folder to /var/www/rest folder. The controllers should go in 
+/var/www/rest/Controllers folder. Currently only one level of api is supported
+
+- The .htaccess converts the rest uri /rest/test?123 into /rest/index.php?RESTurl=test.
+This test will load Controllers/Test.php. 
+- This library follows Zend convention of path mapping.
+For e.g. Controllers_Test will look for Controllers/Test.php
+- Controllers directory is required.
+- The controller file name should be equal to rest resource uri.
+For e.g. for REST uri "/rest/test", there should be Controllers/Test.php
+- The controller class name should have "Controllers_" prefix.
+- The controller class should extend RestController defined in Rest.php.
+
+For e.g. 
+	class Controllers_Test extends RestController {
+
+	}
+
+- Suppose, you only want to enable POST method for a REST api and disable
+other methods (GET/PUT/DELETE). In that case the disabled methods should 
+return "null".
+
+For e.g.
+	
+	class Controllers_Test extends RestController {
+		public function get() {
+			return null;
+		}
+
+		public function post() {
+			$this->response = array('TestResponse' => 'MyResponse');
+			$this->responseStatus = 200;
+		}
+
+		public function put() {
+			return null;
+		}
+
+		public function delete() {
+			return null;
+		}
+	}
+
+- The functions get, post, put, delete methods of a controller maps to
+the HTTP GET, POST, PUT, DELETE respectively.
+- The $this->response and $this->responseStatus variables should be 
+mandatorily populated by a enabled api method. $this->response will be
+the response body and $this->responseStatus will be the HTTP response
+status. $this->response should be in associative format and there should
+be always one and only key in the parent array. The reason for having
+one key in the parent is because in xml response this key will become the
+root node for the xml.
+
 Usage
 -----
 
