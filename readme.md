@@ -14,7 +14,8 @@ Usage
 
 Look in the [examples][examples] folder for the implementation details.
 
-To test the examples, run the following curl commands in shell
+To test the examples, run the following curl commands in shell after uploading
+folder to your localhost document root.
 
 - GET Request (JSON Response)
 curl "http://localhost/simple-rest/examples/test?a=123"
