@@ -11,7 +11,9 @@ The Simple-REST is licensed under the Apache Licence, Version 2.0
 Requirement
 -----------
 
-mod_rewrite support is required.
+Apache mod_rewrite support.
+PHP XMLWriter extension.
+
 
 Notes
 -----
@@ -67,10 +69,35 @@ the HTTP GET, POST, PUT, DELETE respectively.
 - The $this->response and $this->responseStatus variables should be 
 mandatorily populated by a enabled api method. $this->response will be
 the response body and $this->responseStatus will be the HTTP response
-status. $this->response should be in associative format and there should
-be always one and only key in the parent array. The reason for having
+status. $this->response should be in associative array format and there should
+be always one and only key in the immediate first parent. The reason for having
 one key in the parent is because in xml response this key will become the
-root node for the xml.
+root node for the xml. The nesting level of the response array can go to 
+any level.
+
+For e.g.
+
+$this->response = array('root' => array('xyz' => '123', 'abc' => '567'));
+
+- For XML based responses, in case of integer keys in the response array, 
+its parent key will be taken and will be suffixed with the integer index 
+to form the nodename in the response.
+
+For e.g.
+
+$this->response = array('root' => array('xyz' => '123', 'abc' => array('567','890')));
+
+will be converted to
+
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<xyz>123</xyz>
+	<abc>
+		<abc0>567</abc0>
+		<abc1>456</abc1>
+	</abc>
+</root>
+
 
 Usage
 -----

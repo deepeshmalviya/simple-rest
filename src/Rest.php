@@ -142,6 +142,8 @@ class Rest {
 						}
 						continue;
 					}
+					// Special handling for integer keys in array
+					$key = (is_int($key)) ? $old_key.$key : $key;
 					$xml->writeElement($key, $value);
 				}
 			}
