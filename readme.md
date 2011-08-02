@@ -89,14 +89,14 @@ $this->response = array('root' => array('xyz' => '123', 'abc' => array('567','89
 
 will be converted to
 
-<?xml version="1.0" encoding="UTF-8"?>
-<root>
-	<xyz>123</xyz>
-	<abc>
-		<abc0>567</abc0>
-		<abc1>456</abc1>
-	</abc>
-</root>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;root&gt;
+    &lt;xyz&gt;123&lt;/xyz&gt;
+    &lt;abc&gt;
+        &lt;abc0&gt;567&lt;/abc0&gt;
+        &lt;abc1&gt;456&lt;/abc1&gt;
+     &lt;/abc&gt;
+&lt;/root&gt;
 
 
 Usage
