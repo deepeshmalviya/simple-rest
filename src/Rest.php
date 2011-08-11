@@ -93,6 +93,9 @@ class Rest {
 			}
 			if(!$method->isStatic()) {
 				$controller = $controller->newInstance($this->request);
+				if(!$controller->checkAuth()) {
+					throw new Exception('Unauthorized', 401);
+				}
 				$method->invoke($controller);
 				$this->response = $controller->getResponse();
 				$this->responseStatus = $controller->getResponseStatus();
@@ -309,6 +312,10 @@ abstract class RestController {
 
 	final public function getResponse() {
 		return $this->response;
+	}
+
+	public function checkAuth() {
+		return true;
 	}
 
 	// @codeCoverageIgnoreStart
