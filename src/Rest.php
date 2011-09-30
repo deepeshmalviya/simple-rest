@@ -278,7 +278,7 @@ class Rest {
 	 * Function returns response content type.
 	 */
 	private function getResponseContentType($type = null) {
-		return $contentTypes[$type];
+		return self::$contentTypes[$type];
 	}
 		
 	private function send() {
