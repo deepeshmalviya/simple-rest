@@ -184,7 +184,7 @@ class Rest {
 			$method = $this->request['content-type'] . 'Response';
 			$this->response = array('status' => $this->responseStatus, 'body' => $this->$method());
 		} else {
-			$this->request['content-type'] = 'querystring';
+			$this->request['content-type'] = 'qs';
 			$this->response = array('status' => $this->responseStatus, 'body' => $this->response);
 		}
 		
